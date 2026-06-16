@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demander un devis · Studio Hostly</title>
+<meta name="description" content="Parlons de votre événement. Décrivez votre projet, je reviens vers vous avec une proposition sur-mesure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .page-hero{position:relative;overflow:hidden;padding:74px 0 20px}
+  .page-hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(110% 70% at 88% -10%,rgba(232,98,74,.12),transparent 58%)}
+  .page-hero .eyebrow{font-family:'Spline Sans Mono',monospace;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--sea);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+  .page-hero .eyebrow::before{content:"";width:34px;height:1px;background:var(--sea)}
+  .page-hero h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(34px,5vw,56px);line-height:1.04;letter-spacing:-.02em;max-width:16ch}
+  .page-hero .lede{margin-top:20px;font-size:clamp(16px,1.7vw,19px);color:#3a4a47;max-width:48ch}
+
+  .contact-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:46px;align-items:start}
+  .form{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:36px 34px;box-shadow:var(--shadow)}
+  .field{margin-bottom:20px}
+  .field label{display:block;font-size:13.5px;font-weight:500;margin-bottom:8px;color:var(--ink)}
+  .field input,.field select,.field textarea{
+    width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:11px;
+    background:#fff;font-family:inherit;font-size:15px;color:var(--ink);transition:border-color .2s,box-shadow .2s;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{
+    outline:none;border-color:var(--sea);box-shadow:0 0 0 3px rgba(31,111,106,.14);
+  }
+  .field textarea{resize:vertical;min-height:120px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .form-note{font-family:'Spline Sans Mono',monospace;font-size:11.5px;color:var(--muted);margin-top:6px}
+  .aside h3{font-family:'Fraunces',serif;font-weight:500;font-size:22px;margin-bottom:14px}
+  .aside .line{display:flex;gap:13px;align-items:flex-start;margin-bottom:18px;font-size:14.5px;color:#3a4a47}
+  .aside .line svg{flex:none;margin-top:2px}
+  .aside .line b{display:block;color:var(--ink);font-weight:600;margin-bottom:2px}
+  .promise{background:linear-gradient(165deg,var(--sea),var(--sea-deep));color:#eef6f4;border-radius:18px;padding:26px 24px;margin-top:8px}
+  .promise .tag{font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--sand)}
+  .promise p{font-size:14.5px;margin-top:10px;color:rgba(238,246,244,.9)}
+
+  .toast{display:none;background:rgba(31,111,106,.12);border:1px solid var(--sea);color:var(--sea-deep);border-radius:12px;padding:14px 16px;margin-bottom:20px;font-size:14.5px}
+  .toast.show{display:block}
+
+  @media(max-width:860px){
+    .contact-grid{grid-template-columns:1fr;gap:30px}
+    .row{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand"><svg class="mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Studio Hostly"><circle cx="32" cy="32" r="31" fill="#13524e"/><circle cx="32" cy="32" r="5.5" fill="#e8624a"/><circle cx="32" cy="15" r="2.6" fill="#f4efe6"/><circle cx="47" cy="24" r="2.6" fill="#f4efe6"/><circle cx="47" cy="40" r="2.6" fill="#f4efe6"/><circle cx="32" cy="49" r="2.6" fill="#f4efe6"/><circle cx="17" cy="40" r="2.6" fill="#f4efe6"/><circle cx="17" cy="24" r="2.6" fill="#f4efe6"/><path d="M32 18 L32 27 M44.5 25.5 L37 30 M44.5 38.5 L37 34 M32 46 L32 37 M19.5 38.5 L27 34 M19.5 25.5 L27 30" stroke="#d8c4a0" stroke-width="1.6" stroke-linecap="round"/></svg>Studio Hostly</a>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="airbnb.html">Airbnb &amp; locations</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html" class="nav-cta">Demander un devis</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">Demander un devis</div>
+    <h1>Parlons de votre événement.</h1>
+    <p class="lede">Décrivez votre projet en quelques lignes. Je reviens vers vous rapidement avec une proposition adaptée — sans engagement.</p>
+  </div>
+</header>
+
+<section style="padding-top:24px">
+  <div class="wrap contact-grid">
+    <div class="form reveal">
+      <div class="toast" id="toast">Merci ! Votre client mail va s'ouvrir avec le récapitulatif. Si rien ne se passe, écrivez-moi directement.</div>
+      <div class="row">
+        <div class="field"><label for="nom">Votre nom</label><input id="nom" type="text" placeholder="Prénom Nom"></div>
+        <div class="field"><label for="email">Votre e-mail</label><input id="email" type="email" placeholder="vous@exemple.com"></div>
+      </div>
+      <div class="field">
+        <label for="type">Type d'événement</label>
+        <select id="type">
+          <option value="">Choisir…</option>
+          <option>Séjour / voyage de groupe</option>
+          <option>Mariage / grande occasion</option>
+          <option>Événement d'entreprise</option>
+          <option>Livret d'accueil (Airbnb / location)</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="row">
+        <div class="field"><label for="date">Date approximative</label><input id="date" type="text" placeholder="ex. octobre 2026"></div>
+        <div class="field"><label for="pers">Nombre de personnes</label><input id="pers" type="text" placeholder="ex. 25"></div>
+      </div>
+      <div class="field">
+        <label for="msg">Votre projet en quelques mots</label>
+        <textarea id="msg" placeholder="Dites-moi l'essentiel : le lieu, l'ambiance, ce que vous aimeriez que le site permette…"></textarea>
+        <div class="form-note">Aucune donnée n'est stockée par ce formulaire : il prépare simplement un e-mail.</div>
+      </div>
+      <button class="btn btn-primary" id="send" type="button">Envoyer ma demande →</button>
+    </div>
+
+    <aside class="aside reveal">
+      <h3>Me contacter directement</h3>
+      <div class="line">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f6f6a" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        <div><b>E-mail</b><a href="mailto:contact@exemple.com">contact@exemple.com</a></div>
+      </div>
+      <div class="line">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f6f6a" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        <div><b>Téléphone</b><span style="color:var(--muted)">à compléter</span></div>
+      </div>
+      <div class="promise">
+        <div class="tag">Mon engagement</div>
+        <p>Une réponse sous 48 h, un premier échange pour comprendre votre projet, et une proposition claire. Le conseil commence dès le premier contact.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <h5>Studio Hostly</h5>
+      <p>Des sites d'événement conçus avec l'œil de l'hôtellerie de luxe et la bonne technologie. Plus qu'un livrable : du conseil.</p>
+    </div>
+    <div>
+      <div class="foot-label">Le site</div>
+      <a href="index.html">Accueil</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="airbnb.html">Airbnb &amp; locations</a>
+      <a href="realisations.html">Réalisations</a>
+    </div>
+    <div>
+      <div class="foot-label">En savoir plus</div>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Demander un devis</a>
+    </div>
+  </div>
+  <div class="foot-bottom">© 2026 Studio Hostly · conçu par Bertrand</div>
+</footer>
+
+<script src="assets/app.js"></script>
+<script>
+  document.getElementById('send').addEventListener('click',function(){
+    var v=function(id){return (document.getElementById(id).value||'').trim();};
+    var to='contact@exemple.com';
+    var subj='Demande de devis — '+(v('type')||'événement')+(v('nom')?' — '+v('nom'):'');
+    var body=
+      'Nom : '+v('nom')+'\n'+
+      'E-mail : '+v('email')+'\n'+
+      'Type : '+v('type')+'\n'+
+      'Date : '+v('date')+'\n'+
+      'Nombre de personnes : '+v('pers')+'\n\n'+
+      'Projet :\n'+v('msg');
+    document.getElementById('toast').classList.add('show');
+    window.location.href='mailto:'+to+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+  });
+</script>
+</body>
+</html>

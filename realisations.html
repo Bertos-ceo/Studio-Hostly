@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Réalisations · Studio Hostly</title>
+<meta name="description" content="Un exemple concret : le site d'un anniversaire de mariage à l'île Maurice. Programme, RSVP, participants, album et livre d'or.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .page-hero{position:relative;overflow:hidden;padding:74px 0 20px}
+  .page-hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(110% 70% at 88% -10%,rgba(31,111,106,.14),transparent 58%),radial-gradient(70% 50% at -5% 110%,rgba(232,98,74,.10),transparent 55%)}
+  .page-hero .eyebrow{font-family:'Spline Sans Mono',monospace;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--sea);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+  .page-hero .eyebrow::before{content:"";width:34px;height:1px;background:var(--sea)}
+  .page-hero h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(34px,5vw,58px);line-height:1.04;letter-spacing:-.02em;max-width:18ch}
+  .page-hero .lede{margin-top:20px;font-size:clamp(16px,1.7vw,19px);color:#3a4a47;max-width:52ch}
+
+  .case{display:grid;grid-template-columns:.95fr 1.05fr;gap:48px;align-items:center}
+  .case-media{
+    border-radius:22px;overflow:hidden;box-shadow:var(--shadow-lg);
+    background:linear-gradient(165deg,#1a8a86,#0f3f3c);position:relative;aspect-ratio:16/11;
+    display:flex;align-items:flex-end;padding:30px;
+  }
+  .case-media::before{content:"🌺";position:absolute;top:24px;right:28px;font-size:40px;opacity:.9}
+  .case-media .mlabel{color:#eef6f4}
+  .case-media .mlabel .k{font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sand)}
+  .case-media .mlabel .ti{font-family:'Fraunces',serif;font-size:30px;font-weight:500;margin-top:8px;line-height:1.1}
+  .case-media .mlabel .ds{font-size:14px;color:rgba(238,246,244,.85);margin-top:6px}
+  .case-tag{font-family:'Spline Sans Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral)}
+  .case h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);letter-spacing:-.01em;margin:10px 0 16px}
+  .case p{color:#3a4a47;font-size:15.5px;margin-bottom:16px;max-width:46ch}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0 26px}
+  .chip{font-family:'Spline Sans Mono',monospace;font-size:12px;background:var(--card);border:1px solid var(--line);border-radius:100px;padding:8px 14px;color:var(--sea-deep)}
+
+  .feats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+  .fc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 24px;transition:transform .35s,box-shadow .35s}
+  .fc:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .fc .n{font-family:'Spline Sans Mono',monospace;font-size:12px;color:var(--coral);letter-spacing:.1em}
+  .fc h3{font-family:'Fraunces',serif;font-weight:500;font-size:20px;margin:8px 0 7px}
+  .fc p{font-size:14px;color:var(--muted)}
+
+  .more{background:var(--paper-2);border-radius:22px;padding:42px 40px;text-align:center}
+  .more h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);max-width:24ch;margin:0 auto 10px;letter-spacing:-.01em}
+  .more p{color:var(--muted);max-width:48ch;margin:0 auto 24px}
+
+  @media(max-width:860px){
+    .case{grid-template-columns:1fr;gap:30px}
+    .feats{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand"><svg class="mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Studio Hostly"><circle cx="32" cy="32" r="31" fill="#13524e"/><circle cx="32" cy="32" r="5.5" fill="#e8624a"/><circle cx="32" cy="15" r="2.6" fill="#f4efe6"/><circle cx="47" cy="24" r="2.6" fill="#f4efe6"/><circle cx="47" cy="40" r="2.6" fill="#f4efe6"/><circle cx="32" cy="49" r="2.6" fill="#f4efe6"/><circle cx="17" cy="40" r="2.6" fill="#f4efe6"/><circle cx="17" cy="24" r="2.6" fill="#f4efe6"/><path d="M32 18 L32 27 M44.5 25.5 L37 30 M44.5 38.5 L37 34 M32 46 L32 37 M19.5 38.5 L27 34 M19.5 25.5 L27 30" stroke="#d8c4a0" stroke-width="1.6" stroke-linecap="round"/></svg>Studio Hostly</a>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="airbnb.html">Airbnb &amp; locations</a>
+      <a href="realisations.html" class="active">Réalisations</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html" class="nav-cta">Demander un devis</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">Réalisations</div>
+    <h1>Un exemple vaut mieux qu'un argumentaire.</h1>
+    <p class="lede">Voici un site réel, conçu pour un séjour de groupe à l'île Maurice. Le même soin peut s'appliquer à votre événement.</p>
+  </div>
+</header>
+
+<section style="padding-top:24px">
+  <div class="wrap">
+    <div class="case reveal">
+      <div class="case-media">
+        <div class="mlabel">
+          <div class="k">Séjour de groupe · destination</div>
+          <div class="ti">Sea you in Mauritius</div>
+          <div class="ds">Anniversaire de mariage · 3–11 octobre 2026</div>
+        </div>
+      </div>
+      <div>
+        <div class="case-tag">Étude de cas</div>
+        <h2>Réunir une vingtaine d'invités autour d'un séjour, sans rien oublier</h2>
+        <p>Un anniversaire de mariage à célébrer à l'autre bout du monde, avec une villa partagée, un programme d'activités sur plusieurs jours et des invités venus de plusieurs pays.</p>
+        <p>Le site réunit tout : la villa, les infos pratiques, le programme avec réponse par activité, une page où chacun se présente avant le départ, un album collaboratif et un livre d'or.</p>
+        <div class="chips">
+          <span class="chip">RSVP par activité</span>
+          <span class="chip">Page participants</span>
+          <span class="chip">Album partagé</span>
+          <span class="chip">Livre d'or</span>
+          <span class="chip">Infos pratiques</span>
+        </div>
+        <a href="https://sea-you-in-mauritius.info/" target="_blank" rel="noopener" class="btn btn-dark">Voir le site en ligne ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">Ce que le site gère</div>
+      <div class="sec-title">Pensé pour le voyage, pas seulement l'événement</div>
+    </div>
+    <div class="feats">
+      <div class="fc reveal"><div class="n">01</div><h3>Le séjour d'abord</h3><p>Villa, chambres, ce qui est inclus, règles de la maison : le cadre est posé avant tout le reste.</p></div>
+      <div class="fc reveal"><div class="n">02</div><h3>Un programme vivant</h3><p>Chaque activité a sa fiche, son prix et son bouton de réponse. On sait qui vient à quoi, sans relancer personne.</p></div>
+      <div class="fc reveal"><div class="n">03</div><h3>Le groupe se connaît</h3><p>Avant le départ, chacun se présente en quelques mots. L'ambiance commence avant l'avion.</p></div>
+      <div class="fc reveal"><div class="n">04</div><h3>Les souvenirs au même endroit</h3><p>Un album partagé pour que tout le monde reparte avec les photos de tout le monde.</p></div>
+      <div class="fc reveal"><div class="n">05</div><h3>Un mot pour les hôtes</h3><p>Le livre d'or recueille les messages — un supplément d'âme que les tableurs n'ont pas.</p></div>
+      <div class="fc reveal"><div class="n">06</div><h3>Tout dans un lien</h3><p>Aucune appli à installer. Un lien à partager, accessible depuis n'importe quel téléphone.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap">
+    <div class="more reveal">
+      <h2>Votre événement peut avoir le même soin.</h2>
+      <p>Mariage, séminaire, anniversaire, livret d'accueil pour votre location : on part de votre projet et on construit le bon site.</p>
+      <a href="contact.html" class="btn btn-primary">Demander un devis →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <h5>Studio Hostly</h5>
+      <p>Des sites d'événement conçus avec l'œil de l'hôtellerie de luxe et la bonne technologie. Plus qu'un livrable : du conseil.</p>
+    </div>
+    <div>
+      <div class="foot-label">Le site</div>
+      <a href="index.html">Accueil</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="airbnb.html">Airbnb &amp; locations</a>
+      <a href="realisations.html">Réalisations</a>
+    </div>
+    <div>
+      <div class="foot-label">En savoir plus</div>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Demander un devis</a>
+    </div>
+  </div>
+  <div class="foot-bottom">© 2026 Studio Hostly · conçu par Bertrand</div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Airbnb &amp; locations · Le livret d'accueil digital — Studio Hostly</title>
+<meta name="description" content="Un livret d'accueil digital pour votre location : mode d'emploi du logement, activités, restaurants et bonnes adresses choisies par un œil d'hôtelier.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .page-hero{position:relative;overflow:hidden;padding:74px 0 30px}
+  .page-hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(110% 70% at 90% -10%,rgba(232,98,74,.13),transparent 58%),radial-gradient(70% 50% at -5% 110%,rgba(31,111,106,.12),transparent 55%);}
+  .page-hero h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(34px,5vw,58px);line-height:1.04;letter-spacing:-.02em;max-width:18ch}
+  .page-hero h1 em{font-style:italic;color:var(--coral)}
+  .page-hero .lede{margin-top:22px;font-size:clamp(16px,1.7vw,19px);color:#3a4a47;max-width:52ch}
+  .page-hero .eyebrow{font-family:'Spline Sans Mono',monospace;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--sea);margin-bottom:22px;display:flex;align-items:center;gap:10px}
+  .page-hero .eyebrow::before{content:"";width:34px;height:1px;background:var(--sea)}
+
+  /* welcome book mock */
+  .book-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+  .booklet{
+    background:var(--ink);border-radius:22px;padding:30px;box-shadow:var(--shadow-lg);
+  }
+  .booklet .screen{background:var(--paper);border-radius:14px;overflow:hidden}
+  .booklet .bar{background:var(--sea-deep);padding:16px 18px;color:#f4efe6}
+  .booklet .bar .t{font-family:'Fraunces',serif;font-size:18px}
+  .booklet .bar .s{font-family:'Spline Sans Mono',monospace;font-size:11px;color:var(--sand);letter-spacing:.08em;margin-top:2px}
+  .booklet .rows{padding:14px}
+  .brow{display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px}
+  .brow+.brow{margin-top:6px}
+  .brow:nth-child(odd){background:#fff}
+  .brow .ic{width:30px;height:30px;border-radius:8px;background:rgba(31,111,106,.12);display:flex;align-items:center;justify-content:center;flex:none}
+  .brow .lab{font-size:13.5px;font-weight:500}
+  .brow .lab small{display:block;font-weight:400;color:var(--muted);font-size:11.5px;margin-top:1px}
+
+  /* feature list */
+  .feat{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .fcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 24px;transition:transform .35s,box-shadow .35s}
+  .fcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .fcard .ico{width:44px;height:44px;border-radius:12px;background:rgba(232,98,74,.1);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .fcard h3{font-family:'Fraunces',serif;font-weight:500;font-size:20px;margin-bottom:7px}
+  .fcard p{font-size:14.5px;color:var(--muted)}
+
+  /* the edit: hotelier eye */
+  .edit{background:var(--paper-2);border-radius:22px;padding:44px 40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  .edit h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);letter-spacing:-.01em;max-width:18ch}
+  .edit p{color:#3a4a47;font-size:15.5px;margin-top:14px;max-width:46ch}
+  .edit-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+  .edit-list li{font-size:15px;padding-left:28px;position:relative}
+  .edit-list li::before{content:"";position:absolute;left:0;top:7px;width:12px;height:12px;border-radius:50%;border:2px solid var(--coral)}
+  .edit-list b{color:var(--ink)}
+
+  /* price line */
+  .offer{background:linear-gradient(160deg,var(--sea-deep),var(--sea));color:#f4efe6;border-radius:24px;padding:50px 44px;display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+  .offer h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);max-width:20ch;letter-spacing:-.01em}
+  .offer p{color:rgba(244,239,230,.82);margin-top:8px;max-width:40ch}
+  .offer .price{font-family:'Fraunces',serif;font-size:52px;font-weight:500;line-height:1}
+  .offer .price .cur{font-size:24px;vertical-align:top}
+  .offer .pn{font-family:'Spline Sans Mono',monospace;font-size:12.5px;color:rgba(244,239,230,.7);margin-top:8px}
+
+  @media(max-width:820px){
+    .book-grid{grid-template-columns:1fr;gap:36px}
+    .feat{grid-template-columns:1fr}
+    .edit{grid-template-columns:1fr;gap:26px}
+    .offer{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand"><svg class="mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Studio Hostly"><circle cx="32" cy="32" r="31" fill="#13524e"/><circle cx="32" cy="32" r="5.5" fill="#e8624a"/><circle cx="32" cy="15" r="2.6" fill="#f4efe6"/><circle cx="47" cy="24" r="2.6" fill="#f4efe6"/><circle cx="47" cy="40" r="2.6" fill="#f4efe6"/><circle cx="32" cy="49" r="2.6" fill="#f4efe6"/><circle cx="17" cy="40" r="2.6" fill="#f4efe6"/><circle cx="17" cy="24" r="2.6" fill="#f4efe6"/><path d="M32 18 L32 27 M44.5 25.5 L37 30 M44.5 38.5 L37 34 M32 46 L32 37 M19.5 38.5 L27 34 M19.5 25.5 L27 30" stroke="#d8c4a0" stroke-width="1.6" stroke-linecap="round"/></svg>Studio Hostly</a>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="airbnb.html" class="active">Airbnb &amp; locations</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html" class="nav-cta">Demander un devis</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap book-grid">
+    <div>
+      <div class="eyebrow">Pour les hôtes &amp; propriétaires</div>
+      <h1>Le livret d'accueil que vos voyageurs <em>vont adorer</em>.</h1>
+      <p class="lede">Bien plus qu'un classeur posé sur la table : un livret d'accueil digital, accessible depuis un simple lien ou QR code, qui guide vos voyageurs et leur fait vivre la destination comme un local.</p>
+      <div class="hero-cta" style="margin-top:30px;display:flex;gap:14px;flex-wrap:wrap">
+        <a href="contact.html" class="btn btn-primary">Créer mon livret →</a>
+        <a href="#offre" class="btn btn-ghost">Voir le tarif</a>
+      </div>
+    </div>
+
+    <div class="booklet reveal">
+      <div class="screen">
+        <div class="bar">
+          <div class="t">Villa Azur · Bienvenue 🌿</div>
+          <div class="s">VOTRE SÉJOUR, CLÉS EN MAIN</div>
+        </div>
+        <div class="rows">
+          <div class="brow"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1f6f6a" stroke-width="1.8"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg></span><span class="lab">Le logement<small>Wifi, parking, équipements, départ</small></span></div>
+          <div class="brow"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1f6f6a" stroke-width="1.8"><path d="M12 21s-7-4.6-7-10a7 7 0 0 1 14 0c0 5.4-7 10-7 10z"/><circle cx="12" cy="11" r="2.2"/></svg></span><span class="lab">À faire autour<small>Activités &amp; visites sélectionnées</small></span></div>
+          <div class="brow"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1f6f6a" stroke-width="1.8"><path d="M4 3v18M4 8h10a4 4 0 0 1 0 8H4M18 3v18"/></svg></span><span class="lab">Où manger<small>Restaurants &amp; tables de l'hôte</small></span></div>
+          <div class="brow"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1f6f6a" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="lab">Bonnes adresses<small>Boulangerie, marché, pharmacie</small></span></div>
+          <div class="brow"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1f6f6a" stroke-width="1.8"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/></svg></span><span class="lab">Infos pratiques<small>Urgences, transports, contacts</small></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- WHAT'S INSIDE -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">Ce que contient le livret</div>
+      <div class="sec-title">Tout ce dont un voyageur a besoin, et ce qu'il n'aurait pas trouvé seul</div>
+    </div>
+    <div class="feat">
+      <div class="fcard reveal">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8624a" stroke-width="1.6"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg></div>
+        <h3>Le mode d'emploi du logement</h3>
+        <p>Wifi, chauffage, électroménager, tri, règles de la maison, procédure d'arrivée et de départ. Fini les questions à toute heure.</p>
+      </div>
+      <div class="fcard reveal">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8624a" stroke-width="1.6"><path d="M12 21s-7-4.6-7-10a7 7 0 0 1 14 0c0 5.4-7 10-7 10z"/><circle cx="12" cy="11" r="2.4"/></svg></div>
+        <h3>Activités &amp; visites</h3>
+        <p>Une sélection d'expériences autour du logement : balades, plages, sites à voir, sorties en famille ou en duo, classées par envie et par météo.</p>
+      </div>
+      <div class="fcard reveal">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8624a" stroke-width="1.6"><path d="M4 3v18M4 8h10a4 4 0 0 1 0 8H4M18 3v18"/></svg></div>
+        <h3>Où manger, vraiment bien</h3>
+        <p>Les bonnes tables du coin, du bistrot de quartier au dîner d'exception — avec le mot juste sur l'ambiance et le budget, comme un concierge le ferait.</p>
+      </div>
+      <div class="fcard reveal">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8624a" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>Les adresses du quotidien</h3>
+        <p>Boulangerie, marché, pharmacie, location de vélos, station-service. Les repères qui font qu'on se sent chez soi en cinq minutes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE EDIT : hotelier eye -->
+<section style="padding-top:10px">
+  <div class="wrap">
+    <div class="edit reveal">
+      <div>
+        <h2>La différence : un œil d'hôtelier, pas une liste copiée-collée.</h2>
+        <p>N'importe quel générateur peut lister des restaurants. Le métier, c'est de savoir lesquels recommander, à qui, et pourquoi. Dix ans en hôtellerie de luxe à conseiller des clients exigeants : c'est ça qui entre dans votre livret.</p>
+      </div>
+      <ul class="edit-list">
+        <li><b>Une sélection, pas un annuaire</b> — les bonnes adresses, choisies, pas un copier-coller de Google.</li>
+        <li><b>Le ton concierge</b> — chaque suggestion expliquée, comme une recommandation de vive voix.</li>
+        <li><b>Pensé pour le voyageur</b> — familles, couples, groupes : la bonne idée selon qui séjourne.</li>
+        <li><b>À votre image</b> — aux couleurs de votre logement ou de votre conciergerie.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS FOR HOST -->
+<section style="padding-top:10px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">Pour vous, l'hôte</div>
+      <div class="sec-title">Moins de messages, de meilleurs avis</div>
+    </div>
+    <div class="feat">
+      <div class="fcard reveal">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f6f6a" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Moins de questions répétitives</h3>
+        <p>Le wifi, le code de la porte, l'heure du départ : tout est écrit, accessible 24h/24 depuis leur téléphone.</p>
+      </div>
+      <div class="fcard reveal">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f6f6a" stroke-width="1.6"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg></div>
+        <h3>Des séjours mieux notés</h3>
+        <p>Un voyageur bien accueilli laisse un meilleur avis. Le livret soigne l'expérience du premier au dernier jour.</p>
+      </div>
+      <div class="fcard reveal">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f6f6a" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></div>
+        <h3>Un seul lien ou QR code</h3>
+        <p>À coller dans votre annonce, votre message d'arrivée ou sur un cadre dans l'entrée. Aucune appli à installer.</p>
+      </div>
+      <div class="fcard reveal">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f6f6a" stroke-width="1.6"><path d="M12 20h9M3 20h4M3 4h18v12H3z"/></svg></div>
+        <h3>Mis à jour quand vous voulez</h3>
+        <p>Nouvelle adresse, saison qui change, travaux dans le quartier : le livret évolue avec votre logement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section id="offre" style="padding-top:10px">
+  <div class="wrap">
+    <div class="offer reveal">
+      <div>
+        <h2>Le livret d'accueil digital</h2>
+        <p>Création complète, à votre image, prêt à partager. Une adresse claire pour vos voyageurs, dès la réservation.</p>
+      </div>
+      <div style="text-align:right">
+        <div class="price"><span class="cur">dès €</span>129</div>
+        <div class="pn">par logement · mises à jour incluses la 1ʳᵉ année</div>
+        <div style="margin-top:18px"><a href="contact.html" class="btn btn-primary">Créer mon livret →</a></div>
+      </div>
+    </div>
+    <p class="mono" style="text-align:center;color:var(--muted);font-size:12.5px;margin-top:18px">Plusieurs logements ? Tarif dégressif et formule conciergerie — voir la page Tarifs.</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <h5>Studio Hostly</h5>
+      <p>Des sites d'événement et des livrets d'accueil conçus avec l'œil de l'hôtellerie de luxe. Plus qu'un livrable : du conseil.</p>
+    </div>
+    <div>
+      <div class="foot-label">Le site</div>
+      <a href="index.html">Accueil</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="airbnb.html">Airbnb &amp; locations</a>
+      <a href="realisations.html">Réalisations</a>
+    </div>
+    <div>
+      <div class="foot-label">En savoir plus</div>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Demander un devis</a>
+    </div>
+  </div>
+  <div class="foot-bottom">© 2026 Studio Hostly · conçu par Bertrand</div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

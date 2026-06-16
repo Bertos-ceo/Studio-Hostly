@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarifs · Studio Hostly</title>
+<meta name="description" content="Des prix clairs selon la taille de votre groupe ou de votre événement. Séjours, mariages, événements d'entreprise, livrets d'accueil.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .page-hero{position:relative;overflow:hidden;padding:74px 0 20px}
+  .page-hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(110% 70% at 88% -10%,rgba(31,111,106,.14),transparent 58%)}
+  .page-hero .eyebrow{font-family:'Spline Sans Mono',monospace;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--sea);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+  .page-hero .eyebrow::before{content:"";width:34px;height:1px;background:var(--sea)}
+  .page-hero h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(34px,5vw,58px);line-height:1.04;letter-spacing:-.02em;max-width:18ch}
+  .page-hero .lede{margin-top:20px;font-size:clamp(16px,1.7vw,19px);color:#3a4a47;max-width:50ch}
+
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+  .tier{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 26px 32px;display:flex;flex-direction:column;box-shadow:var(--shadow);position:relative;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+  .tier:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+  .tier.feature{background:linear-gradient(168deg,var(--sea-deep),var(--sea));color:#f4efe6;border-color:transparent}
+  .tier.feature .cap,.tier.feature .price-note,.tier.feature li{color:rgba(244,239,230,.82)}
+  .tier-flag{position:absolute;top:-11px;left:26px;background:var(--coral);color:#fff;font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;border-radius:100px}
+  .cap{font-family:'Spline Sans Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--sea)}
+  .tier-name{font-family:'Fraunces',serif;font-weight:500;font-size:27px;margin:10px 0 4px}
+  .tier-for{font-size:13.5px;color:var(--muted);min-height:38px}
+  .tier.feature .tier-for{color:rgba(244,239,230,.7)}
+  .price{font-family:'Fraunces',serif;font-size:46px;font-weight:500;letter-spacing:-.02em;margin:18px 0 2px;display:flex;align-items:baseline;gap:6px}
+  .price .cur{font-size:24px}
+  .price-note{font-size:12.5px;color:#7a8784;font-family:'Spline Sans Mono',monospace}
+  .div{height:1px;background:var(--line);margin:22px 0}
+  .tier.feature .div{background:rgba(244,239,230,.2)}
+  .tier ul{list-style:none;display:flex;flex-direction:column;gap:11px;flex:1}
+  .tier li{font-size:14.5px;padding-left:25px;position:relative;color:#33423f}
+  .tier li::before{content:"";position:absolute;left:0;top:8px;width:11px;height:11px;border-radius:50%;border:2px solid var(--sea)}
+  .tier.feature li::before{border-color:var(--sand)}
+  .tier li.plus::before{background:var(--coral);border-color:var(--coral)}
+  .updates{margin-top:22px;font-size:12.5px;font-family:'Spline Sans Mono',monospace;color:#7a8784;padding-top:16px;border-top:1px dashed var(--line)}
+  .tier.feature .updates{color:rgba(244,239,230,.7);border-top-color:rgba(244,239,230,.22)}
+
+  .addons{background:var(--paper-2);border-radius:22px;padding:38px 34px;margin-top:8px}
+  .addon-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 32px;margin-top:26px}
+  .addon{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .addon-name{font-size:15px}
+  .addon-name span{display:block;font-size:12.5px;color:#6a7875;margin-top:2px}
+  .addon-price{font-family:'Spline Sans Mono',monospace;font-weight:500;color:var(--sea-deep);white-space:nowrap;font-size:14.5px}
+
+  .corp{margin-top:42px;background:linear-gradient(160deg,#fbf8f1,#f1ebde);border:1px solid var(--line);border-radius:22px;padding:42px 36px 38px;position:relative;overflow:hidden}
+  .corp::after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(31,111,106,.10),transparent 70%);pointer-events:none}
+  .corp-head{max-width:60ch;position:relative;z-index:1}
+  .corp h3{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(24px,3.4vw,34px);letter-spacing:-.01em;margin:10px 0 12px}
+  .corp-head p{font-size:15px;color:#4a5855;max-width:52ch}
+  .corp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px;position:relative;z-index:1}
+  .corp-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 22px 26px;display:flex;flex-direction:column}
+  .corp-card .cap{color:var(--coral)}
+  .corp-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:22px;margin:8px 0 4px}
+  .corp-for{font-size:13px;color:#6a7875;min-height:36px}
+  .corp-price{font-family:'Fraunces',serif;font-size:34px;font-weight:500;margin:14px 0 2px;letter-spacing:-.01em}
+  .corp-price .cur{font-size:18px}
+  .corp-note{font-family:'Spline Sans Mono',monospace;font-size:11.5px;color:#7a8784}
+  .corp-list{margin-top:18px;display:flex;flex-direction:column;gap:9px;flex:1;list-style:none}
+  .corp-list li{font-size:13.5px;padding-left:22px;position:relative;color:#33423f}
+  .corp-list li::before{content:"";position:absolute;left:0;top:7px;width:9px;height:9px;border-radius:50%;border:2px solid var(--sea)}
+  .corp-list li.plus::before{background:var(--coral);border-color:var(--coral)}
+  .corp-foot{margin-top:28px;position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:10px 26px;font-family:'Spline Sans Mono',monospace;font-size:12.5px;color:#5d6b68}
+  .corp-foot span{display:inline-flex;align-items:center;gap:8px}
+  .corp-foot span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sea)}
+
+  .trust{margin-top:18px;background:var(--sea-deep);color:#eef4f2;border-radius:18px;padding:32px 32px 28px}
+  .trust .sec-kicker{color:var(--sand)}
+  .trust h4{font-family:'Fraunces',serif;font-weight:500;font-size:22px;margin:8px 0 18px;color:#fff}
+  .trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 30px}
+  .trust-item{display:flex;gap:13px;align-items:flex-start;font-size:14px;color:rgba(238,244,242,.86);line-height:1.5}
+  .trust-item svg{flex:none;margin-top:2px}
+  .trust-item b{color:#fff;font-weight:600;display:block;font-size:14.5px;margin-bottom:2px}
+
+  .b2b{margin-top:42px;background:var(--ink);color:var(--paper);border-radius:22px;padding:46px 40px;display:grid;grid-template-columns:1.3fr 1fr;gap:36px;align-items:center}
+  .b2b .sec-kicker{color:var(--coral)}
+  .b2b h3{font-family:'Fraunces',serif;font-weight:500;font-size:30px;margin:10px 0 14px;letter-spacing:-.01em}
+  .b2b p{color:rgba(244,239,230,.78);font-size:15px;max-width:42ch}
+  .b2b-price{text-align:right}
+  .b2b-price .big{font-family:'Fraunces',serif;font-size:54px;font-weight:500;line-height:1}
+  .b2b-price .alt{font-family:'Spline Sans Mono',monospace;font-size:13px;color:rgba(244,239,230,.65);margin-top:10px}
+  .b2b-price .cur{font-size:26px;vertical-align:top}
+
+  .guard{margin:36px 0 0;display:flex;gap:14px;align-items:flex-start;font-size:14px;color:#4a5855;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--coral);padding:20px 22px;border-radius:0 14px 14px 0;max-width:62ch}
+  .guard b{color:var(--ink);font-weight:600}
+
+  @media(max-width:860px){
+    .tiers{grid-template-columns:1fr;max-width:440px;margin:0 auto}
+    .addon-grid{grid-template-columns:1fr}
+    .corp-grid{grid-template-columns:1fr}
+    .trust-grid{grid-template-columns:1fr}
+    .b2b{grid-template-columns:1fr;text-align:left}
+    .b2b-price{text-align:left}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand"><svg class="mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Studio Hostly"><circle cx="32" cy="32" r="31" fill="#13524e"/><circle cx="32" cy="32" r="5.5" fill="#e8624a"/><circle cx="32" cy="15" r="2.6" fill="#f4efe6"/><circle cx="47" cy="24" r="2.6" fill="#f4efe6"/><circle cx="47" cy="40" r="2.6" fill="#f4efe6"/><circle cx="32" cy="49" r="2.6" fill="#f4efe6"/><circle cx="17" cy="40" r="2.6" fill="#f4efe6"/><circle cx="17" cy="24" r="2.6" fill="#f4efe6"/><path d="M32 18 L32 27 M44.5 25.5 L37 30 M44.5 38.5 L37 34 M32 46 L32 37 M19.5 38.5 L27 34 M19.5 25.5 L27 30" stroke="#d8c4a0" stroke-width="1.6" stroke-linecap="round"/></svg>Studio Hostly</a>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="tarifs.html" class="active">Tarifs</a>
+      <a href="airbnb.html">Airbnb &amp; locations</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html" class="nav-cta">Demander un devis</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">Tarifs</div>
+    <h1>Un prix clair, selon votre événement.</h1>
+    <p class="lede">Pas de surprise, pas d'abonnement caché. Vous payez pour un site fini, livré clé en main — et le conseil qui va avec.</p>
+  </div>
+</header>
+
+<!-- SÉJOURS -->
+<section style="padding-top:30px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">Séjours &amp; événements privés</div>
+      <div class="sec-title">Selon la taille du groupe</div>
+    </div>
+    <div class="tiers">
+      <div class="tier reveal">
+        <div class="cap">Jusqu'à 15 personnes</div>
+        <div class="tier-name">Essentiel</div>
+        <div class="tier-for">Villa, week-end entre amis, EVJF / EVG</div>
+        <div class="price"><span class="cur">€</span>149</div>
+        <div class="price-note">prix fixe · livré clé en main</div>
+        <div class="div"></div>
+        <ul>
+          <li>Site sur-mesure à vos couleurs</li>
+          <li>Réponses des invités (RSVP)</li>
+          <li>Album photo partagé</li>
+          <li>Livre d'or &amp; infos pratiques</li>
+        </ul>
+        <div class="updates">2 séries de modifs incluses · jusqu'à 7 j avant</div>
+      </div>
+      <div class="tier feature reveal">
+        <div class="tier-flag">Le plus choisi</div>
+        <div class="cap">15 à 40 personnes</div>
+        <div class="tier-name">Groupe</div>
+        <div class="tier-for">Anniversaire, retrouvailles, mariage intime</div>
+        <div class="price"><span class="cur">€</span>279</div>
+        <div class="price-note">prix fixe · coordination légère incluse</div>
+        <div class="div"></div>
+        <ul>
+          <li>Tout l'Essentiel, et&nbsp;:</li>
+          <li class="plus">Agenda multi-activités</li>
+          <li class="plus">Réponse par activité &amp; suivi des présences</li>
+          <li class="plus">Page « participants » pour se présenter</li>
+        </ul>
+        <div class="updates">3 séries de modifs incluses · jusqu'à 7 j avant</div>
+      </div>
+      <div class="tier reveal">
+        <div class="cap">40 personnes et plus</div>
+        <div class="tier-name">Événement</div>
+        <div class="tier-for">Mariage, grand séjour à destination</div>
+        <div class="price"><span class="cur">dès €</span>449</div>
+        <div class="price-note">sur devis · selon le programme</div>
+        <div class="div"></div>
+        <ul>
+          <li>Tout le Groupe, et&nbsp;:</li>
+          <li class="plus">Coordination renforcée</li>
+          <li class="plus">Sections personnalisées</li>
+          <li class="plus">Suivi jusqu'au jour J</li>
+        </ul>
+        <div class="updates">Maintenance incluse jusqu'à l'événement</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPTIONS -->
+<section style="padding-top:10px">
+  <div class="wrap">
+    <div class="addons reveal">
+      <div class="sec-kicker">À ajouter quand il faut</div>
+      <div class="sec-title" style="font-size:clamp(22px,3vw,30px)">Options à la carte</div>
+      <div class="addon-grid">
+        <div class="addon"><div class="addon-name">Pack de modifs en plus<span>jusqu'à 5 changements</span></div><div class="addon-price">39 €</div></div>
+        <div class="addon"><div class="addon-name">Modifs illimitées jusqu'au jour J<span>tranquillité totale</span></div><div class="addon-price">49 €</div></div>
+        <div class="addon"><div class="addon-name">Adresse personnalisée<span>votre-sejour.com</span></div><div class="addon-price">29 €</div></div>
+        <div class="addon"><div class="addon-name">Suivi des paiements sur place<span>activités &amp; budget du groupe</span></div><div class="addon-price">59 €</div></div>
+        <div class="addon"><div class="addon-name">Livraison express<span>en moins de 72 h</span></div><div class="addon-price">+30 %</div></div>
+        <div class="addon"><div class="addon-name">Traduction du site<span>une langue supplémentaire</span></div><div class="addon-price">39 €</div></div>
+      </div>
+    </div>
+
+    <!-- CORPORATE -->
+    <div class="corp reveal">
+      <div class="corp-head">
+        <div class="sec-kicker">Entreprises &amp; organisations</div>
+        <h3>Séminaires, conférences, événements internes</h3>
+        <p>Un site dédié pour vos participants : programme des sessions, inscription par atelier, intervenants, plan d'accès et album partagé. Tout au même endroit, à votre image — fini les e-mails de rappel et les tableurs d'émargement.</p>
+      </div>
+      <div class="corp-grid">
+        <div class="corp-card">
+          <div class="cap">Jusqu'à 50 participants</div>
+          <h4>Séminaire</h4>
+          <div class="corp-for">Journée d'équipe, kick-off, off-site</div>
+          <div class="corp-price"><span class="cur">€</span>390</div>
+          <div class="corp-note">prix fixe · livré clé en main</div>
+          <ul class="corp-list">
+            <li>Programme &amp; horaires</li>
+            <li>Inscription en ligne</li>
+            <li>Infos pratiques &amp; accès</li>
+            <li>Album de l'événement</li>
+          </ul>
+        </div>
+        <div class="corp-card">
+          <div class="cap">50 à 200 participants</div>
+          <h4>Conférence</h4>
+          <div class="corp-for">Convention, journée d'étude, lancement</div>
+          <div class="corp-price"><span class="cur">€</span>690</div>
+          <div class="corp-note">prix fixe · coordination incluse</div>
+          <ul class="corp-list">
+            <li>Tout Séminaire, et&nbsp;:</li>
+            <li class="plus">Sessions parallèles &amp; choix d'ateliers</li>
+            <li class="plus">Fiches intervenants</li>
+            <li class="plus">Suivi des inscriptions en temps réel</li>
+          </ul>
+        </div>
+        <div class="corp-card">
+          <div class="cap">200 participants et plus</div>
+          <h4>Sur-mesure</h4>
+          <div class="corp-for">Grand événement, sans limite de participants</div>
+          <div class="corp-price"><span class="cur">sur</span> devis</div>
+          <div class="corp-note">cadré selon le cahier des charges</div>
+          <ul class="corp-list">
+            <li>Tout Conférence, et&nbsp;:</li>
+            <li class="plus">Accès par e-mail ou code</li>
+            <li class="plus">Charte &amp; intégrations sur demande</li>
+            <li class="plus">Plusieurs éditions / langues</li>
+          </ul>
+        </div>
+      </div>
+      <div class="corp-foot">
+        <span>Site à votre charte graphique (logo, couleurs, typographies)</span>
+        <span>Facturation entreprise (devis &amp; bon de commande)</span>
+        <span>Données hébergées en Europe</span>
+        <span>Modifs jusqu'au jour J incluses</span>
+      </div>
+    </div>
+
+    <!-- SECURITY / RGPD -->
+    <div class="trust reveal">
+      <div class="sec-kicker">Sécurité &amp; conformité</div>
+      <h4>Pensé pour les exigences des entreprises</h4>
+      <div class="trust-grid">
+        <div class="trust-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d8c4a0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div><b>Conforme au RGPD</b>Données des participants traitées en Europe, minimisées et supprimées après l'événement sur demande.</div>
+        </div>
+        <div class="trust-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d8c4a0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <div><b>Accès protégé</b>Site privé par mot de passe ou lien réservé. Les infos internes ne sont jamais indexées par les moteurs de recherche.</div>
+        </div>
+        <div class="trust-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d8c4a0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg>
+          <div><b>Connexion chiffrée</b>HTTPS de bout en bout, hébergement européen. Aucune revente de données, aucun pisteur publicitaire.</div>
+        </div>
+        <div class="trust-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d8c4a0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+          <div><b>Cadre contractuel</b>Convention de traitement (DPA) et facturation entreprise sur demande, pour passer vos process achats sans friction.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- B2B VILLAS -->
+    <div class="b2b reveal">
+      <div>
+        <div class="sec-kicker">Propriétaires &amp; agences de villas</div>
+        <h3>Offrez le site à chaque réservation de groupe</h3>
+        <p>Un modèle réutilisable à vos couleurs, reparamétré pour chaque séjour, dans le strict respect de votre charte graphique. Un service en plus pour vos clients, un revenu récurrent pour vous.</p>
+      </div>
+      <div class="b2b-price">
+        <div class="big"><span class="cur">€</span>39<span style="font-size:18px">/mois</span></div>
+        <div class="alt">ou 390 € / an · sites illimités</div>
+      </div>
+    </div>
+
+    <div class="guard reveal">
+      <div>Chaque devis précise le nombre de séries de modifs incluses. <b>Au-delà, c'est le pack à 39 €</b> — comme ça personne n'a de mauvaise surprise, et le site reste un plaisir jusqu'au départ.</div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <h5>Studio Hostly</h5>
+      <p>Des sites d'événement conçus avec l'œil de l'hôtellerie de luxe et la bonne technologie. Plus qu'un livrable : du conseil.</p>
+    </div>
+    <div>
+      <div class="foot-label">Le site</div>
+      <a href="index.html">Accueil</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="airbnb.html">Airbnb &amp; locations</a>
+      <a href="realisations.html">Réalisations</a>
+    </div>
+    <div>
+      <div class="foot-label">En savoir plus</div>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Demander un devis</a>
+    </div>
+  </div>
+  <div class="foot-bottom">© 2026 Studio Hostly · conçu par Bertrand · prix indicatifs en euros</div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

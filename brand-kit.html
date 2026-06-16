@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Hostly · Kit de marque</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c2826; --paper:#f4efe6; --paper-2:#ebe3d5; --card:#fbf8f1;
+    --sea:#1f6f6a; --sea-deep:#13524e; --coral:#e8624a; --sand:#d8c4a0;
+    --muted:#5d6b68; --line:rgba(28,40,38,.14);
+    --shadow:0 1px 0 rgba(28,40,38,.06), 0 18px 40px -28px rgba(19,82,78,.5);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:'Spline Sans',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px;margin:0 auto;padding:0 32px}
+  .mono{font-family:'Spline Sans Mono',monospace}
+  .serif{font-family:'Fraunces',serif}
+
+  /* Cover */
+  .cover{position:relative;overflow:hidden;padding:90px 0 70px;border-bottom:1px solid var(--line)}
+  .cover::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(120% 80% at 85% -10%,rgba(31,111,106,.16),transparent 58%),radial-gradient(80% 60% at -5% 110%,rgba(232,98,74,.10),transparent 55%)}
+  .kicker{font-family:'Spline Sans Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--sea);display:flex;align-items:center;gap:10px;margin-bottom:26px}
+  .kicker::before{content:"";width:34px;height:1px;background:var(--sea)}
+  .logo-lockup{display:flex;align-items:center;gap:18px;margin-bottom:22px}
+  .mark{width:64px;height:64px;flex:none}
+  .wordmark{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(38px,6vw,62px);letter-spacing:-.02em;line-height:1}
+  .wordmark .studio{display:block;font-family:'Spline Sans Mono',monospace;font-size:13px;font-weight:400;letter-spacing:.32em;text-transform:uppercase;color:var(--sea);margin-bottom:6px}
+  .cover p.tag{font-size:clamp(16px,2vw,20px);color:#3a4a47;max-width:46ch;margin-top:8px}
+
+  section{padding:56px 0;border-bottom:1px solid var(--line)}
+  .sec-num{font-family:'Spline Sans Mono',monospace;font-size:12px;letter-spacing:.16em;color:var(--coral);text-transform:uppercase}
+  h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(24px,3.6vw,34px);letter-spacing:-.01em;margin:8px 0 22px}
+  h3{font-family:'Fraunces',serif;font-weight:500;font-size:20px;margin:0 0 8px}
+  p{font-size:15.5px;color:#33423f}
+  .lead{font-size:17px;color:#2a3a37;max-width:62ch}
+
+  /* Story / meaning */
+  .meaning{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+  .mcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 24px}
+  .mcard .w{font-family:'Fraunces',serif;font-size:22px;color:var(--sea-deep)}
+  .mcard .w em{font-style:italic;color:var(--coral)}
+  .mcard p{margin-top:8px;font-size:14.5px;color:var(--muted)}
+
+  /* Positioning */
+  .pill-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .pill{font-family:'Spline Sans Mono',monospace;font-size:12.5px;background:var(--card);border:1px solid var(--line);border-radius:100px;padding:9px 16px;color:var(--sea-deep)}
+
+  /* Taglines */
+  .tags{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+  .tagcard{border:1px solid var(--line);border-radius:16px;padding:26px 24px;background:var(--card)}
+  .tagcard .lbl{font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);margin-bottom:14px}
+  .tagcard .fr{font-family:'Fraunces',serif;font-size:21px;color:var(--ink);line-height:1.3}
+  .tagcard .en{font-size:14px;color:var(--muted);margin-top:10px;font-style:italic}
+  .tag-hero{grid-column:1 / -1;background:linear-gradient(165deg,var(--sea-deep),var(--sea));border-color:transparent}
+  .tag-hero .lbl{color:var(--sand)}
+  .tag-hero .fr{color:#f4efe6;font-size:clamp(22px,3vw,30px)}
+  .tag-hero .en{color:rgba(244,239,230,.78)}
+
+  /* Color */
+  .swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+  .sw{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+  .sw .chip{height:88px}
+  .sw .meta{padding:14px 16px}
+  .sw .nm{font-size:14px;font-weight:500}
+  .sw .hex{font-family:'Spline Sans Mono',monospace;font-size:12.5px;color:var(--muted);margin-top:3px}
+  .sw .use{font-size:12px;color:var(--muted);margin-top:8px}
+
+  /* Type */
+  .type-row{display:grid;grid-template-columns:1fr;gap:16px;margin-top:24px}
+  .typecard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 28px}
+  .typecard .role{font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral)}
+  .typecard .fam{font-size:13px;color:var(--muted);margin:4px 0 14px}
+  .specimen-serif{font-family:'Fraunces',serif;font-weight:500;font-size:38px;letter-spacing:-.01em;line-height:1.1}
+  .specimen-sans{font-family:'Spline Sans',sans-serif;font-size:20px}
+  .specimen-mono{font-family:'Spline Sans Mono',monospace;font-size:15px;letter-spacing:.04em}
+
+  /* Logo usage */
+  .logos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+  .logobox{border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:150px;text-align:center}
+  .logobox.light{background:var(--card)}
+  .logobox.dark{background:var(--ink)}
+  .logobox.sea{background:var(--sea-deep)}
+  .logobox .cap{font-family:'Spline Sans Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase}
+  .logobox.light .cap{color:var(--muted)}
+  .logobox.dark .cap,.logobox.sea .cap{color:rgba(244,239,230,.6)}
+  .lk{display:flex;align-items:center;gap:10px}
+  .lk .lk-word{font-family:'Fraunces',serif;font-weight:500;font-size:24px;letter-spacing:-.01em}
+  .logobox.light .lk-word{color:var(--ink)}
+  .logobox.dark .lk-word,.logobox.sea .lk-word{color:var(--paper)}
+
+  /* Voice */
+  .voice{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+  .vcard{border:1px solid var(--line);border-radius:16px;padding:24px;background:var(--card)}
+  .vcard .h{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .vcard .h .dot{width:9px;height:9px;border-radius:50%}
+  .vcard.do .dot{background:var(--sea)}
+  .vcard.dont .dot{background:var(--coral)}
+  .vcard .h b{font-size:14px}
+  .vcard ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .vcard li{font-size:14px;padding-left:20px;position:relative;color:#33423f}
+  .vcard.do li::before{content:"✓";position:absolute;left:0;color:var(--sea);font-weight:600}
+  .vcard.dont li::before{content:"×";position:absolute;left:0;color:var(--coral);font-weight:600}
+
+  /* Naming usage */
+  .usage{margin-top:22px;display:flex;flex-direction:column;gap:10px}
+  .urow{display:flex;gap:14px;align-items:baseline;font-size:15px;padding:12px 0;border-bottom:1px solid var(--line)}
+  .urow .ok{font-family:'Spline Sans Mono',monospace;font-size:12px;color:var(--sea);white-space:nowrap;width:80px;flex:none}
+  .urow .no{font-family:'Spline Sans Mono',monospace;font-size:12px;color:var(--coral);white-space:nowrap;width:80px;flex:none}
+
+  footer{padding:40px 0 60px}
+  footer p{font-family:'Spline Sans Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:.02em}
+
+  @media(max-width:760px){
+    .meaning,.tags,.voice{grid-template-columns:1fr}
+    .swatches,.logos{grid-template-columns:1fr 1fr}
+    .tag-hero{grid-column:auto}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<header class="cover">
+  <div class="wrap">
+    <div class="kicker">Kit de marque · v1</div>
+    <div class="logo-lockup">
+      <!-- Signature mark: an "H" formed by two welcoming posts and a hearth line -->
+      <svg class="mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Studio Hostly">
+        <circle cx="32" cy="32" r="31" fill="#13524e"/>
+        <circle cx="32" cy="32" r="5.5" fill="#e8624a"/>
+        <circle cx="32" cy="15" r="2.6" fill="#f4efe6"/><circle cx="47" cy="24" r="2.6" fill="#f4efe6"/>
+        <circle cx="47" cy="40" r="2.6" fill="#f4efe6"/><circle cx="32" cy="49" r="2.6" fill="#f4efe6"/>
+        <circle cx="17" cy="40" r="2.6" fill="#f4efe6"/><circle cx="17" cy="24" r="2.6" fill="#f4efe6"/>
+        <path d="M32 18 L32 27 M44.5 25.5 L37 30 M44.5 38.5 L37 34 M32 46 L32 37 M19.5 38.5 L27 34 M19.5 25.5 L27 30" stroke="#d8c4a0" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <div class="wordmark"><span class="studio">Studio</span>Hostly</div>
+    </div>
+    <p class="tag">L'art de réunir vos invités — des sites d'événement sur-mesure, pensés avec l'œil de l'hôtellerie de luxe.</p>
+  </div>
+</header>
+
+<!-- 1 · THE NAME -->
+<section>
+  <div class="wrap">
+    <div class="sec-num">01 — Le nom</div>
+    <h2>Ce que raconte « Studio Hostly »</h2>
+    <p class="lead">Deux idées en un nom. <strong>Studio</strong>, l'atelier où l'on crée sur-mesure, à la main, avec un point de vue. <strong>Hostly</strong>, de <em>host</em> — l'hôte, l'accueil — porté par la sonorité claire et contemporaine des produits que l'on aime utiliser. Ensemble : un atelier de l'accueil, où la technologie sert l'hospitalité, jamais l'inverse.</p>
+    <div class="meaning">
+      <div class="mcard">
+        <div class="w">Studio</div>
+        <p>La création sur-mesure, le soin de l'artisan, le conseil. Pas une usine à sites : un atelier où chaque projet est unique.</p>
+      </div>
+      <div class="mcard">
+        <div class="w">Host<em>ly</em></div>
+        <p>L'hospitalité au cœur du nom. « Host » dit l'accueil ; « -ly » lui donne sa modernité et sa portée internationale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · POSITIONING -->
+<section>
+  <div class="wrap">
+    <div class="sec-num">02 — Positionnement</div>
+    <h2>Plus qu'un livrable, du conseil</h2>
+    <p class="lead">Studio Hostly conçoit des sites d'événement sur-mesure pour réunir des invités : séjours de groupe, mariages, événements d'entreprise, et livrets d'accueil pour les locations. Là où un générateur livre un gabarit, Studio Hostly apporte le regard d'une décennie passée dans l'hôtellerie de luxe internationale et l'hospitality tech.</p>
+    <div class="pill-row">
+      <span class="pill">Sur-mesure</span>
+      <span class="pill">Hospitalité de luxe</span>
+      <span class="pill">Conseil inclus</span>
+      <span class="pill">International</span>
+      <span class="pill">Humain avant tout</span>
+      <span class="pill">Vision 360°</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · TAGLINES -->
+<section>
+  <div class="wrap">
+    <div class="sec-num">03 — Signatures</div>
+    <h2>Accroches &amp; baseline</h2>
+    <div class="tags">
+      <div class="tagcard tag-hero">
+        <div class="lbl">Baseline principale</div>
+        <div class="fr">L'art de réunir vos invités.</div>
+        <div class="en">The art of bringing your guests together.</div>
+      </div>
+      <div class="tagcard">
+        <div class="lbl">Orientée conseil</div>
+        <div class="fr">Plus qu'un site. Un hôte.</div>
+        <div class="en">More than a website. A host.</div>
+      </div>
+      <div class="tagcard">
+        <div class="lbl">Orientée hôtellerie</div>
+        <div class="fr">L'accueil cinq étoiles, en ligne.</div>
+        <div class="en">Five-star hospitality, online.</div>
+      </div>
+      <div class="tagcard">
+        <div class="lbl">Orientée événement</div>
+        <div class="fr">Chaque événement mérite son hôte.</div>
+        <div class="en">Every event deserves a host.</div>
+      </div>
+      <div class="tagcard">
+        <div class="lbl">Courte / signature</div>
+        <div class="fr">Bienvenue, vraiment.</div>
+        <div class="en">Welcome, truly.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · LOGO -->
+<section>
+  <div class="wrap">
+    <div class="sec-num">04 — Logo</div>
+    <h2>Le symbole</h2>
+    <p class="lead">Un point de ralliement : au centre, en corail, l'événement ; tout autour, les invités qui convergent pour s'y retrouver. Les fils sable relient le groupe au cœur de la rencontre. Moderne et international, le symbole fonctionne en rond plein comme en monogramme seul.</p>
+    <div class="logos">
+      <div class="logobox light">
+        <div class="lk">
+          <svg width="34" height="34" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="31" fill="#13524e"/><circle cx="32" cy="32" r="5.5" fill="#e8624a"/><circle cx="32" cy="15" r="2.6" fill="#f4efe6"/><circle cx="47" cy="24" r="2.6" fill="#f4efe6"/><circle cx="47" cy="40" r="2.6" fill="#f4efe6"/><circle cx="32" cy="49" r="2.6" fill="#f4efe6"/><circle cx="17" cy="40" r="2.6" fill="#f4efe6"/><circle cx="17" cy="24" r="2.6" fill="#f4efe6"/></svg>
+          <span class="lk-word">Hostly</span>
+        </div>
+        <span class="cap">Sur fond clair</span>
+      </div>
+      <div class="logobox dark">
+        <div class="lk">
+          <svg width="34" height="34" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="31" fill="#f4efe6"/><circle cx="32" cy="32" r="5.5" fill="#e8624a"/><circle cx="32" cy="15" r="2.6" fill="#13524e"/><circle cx="47" cy="24" r="2.6" fill="#13524e"/><circle cx="47" cy="40" r="2.6" fill="#13524e"/><circle cx="32" cy="49" r="2.6" fill="#13524e"/><circle cx="17" cy="40" r="2.6" fill="#13524e"/><circle cx="17" cy="24" r="2.6" fill="#13524e"/></svg>
+          <span class="lk-word">Hostly</span>
+        </div>
+        <span class="cap">Sur fond sombre</span>
+      </div>
+      <div class="logobox sea">
+        <div class="lk">
+          <svg width="34" height="34" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="31" fill="none" stroke="#f4efe6" stroke-width="2"/><circle cx="32" cy="32" r="5.5" fill="#e8624a"/><circle cx="32" cy="15" r="2.6" fill="#f4efe6"/><circle cx="47" cy="24" r="2.6" fill="#f4efe6"/><circle cx="47" cy="40" r="2.6" fill="#f4efe6"/><circle cx="32" cy="49" r="2.6" fill="#f4efe6"/><circle cx="17" cy="40" r="2.6" fill="#f4efe6"/><circle cx="17" cy="24" r="2.6" fill="#f4efe6"/></svg>
+          <span class="lk-word">Hostly</span>
+        </div>
+        <span class="cap">Monogramme</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · COLOR -->
+<section>
+  <div class="wrap">
+    <div class="sec-num">05 — Couleurs</div>
+    <h2>Palette</h2>
+    <p class="lead">Une palette chaude et hôtelière : un vert profond de hall d'hôtel, un corail accueillant en accent, un sable et un papier qui apportent la douceur. Le vert porte, le corail souligne, les neutres laissent respirer.</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#13524e"></div><div class="meta"><div class="nm">Vert profond</div><div class="hex">#13524E</div><div class="use">Fonds forts, logo, titres</div></div></div>
+      <div class="sw"><div class="chip" style="background:#1f6f6a"></div><div class="meta"><div class="nm">Vert hôtel</div><div class="hex">#1F6F6A</div><div class="use">Liens, dégradés, détails</div></div></div>
+      <div class="sw"><div class="chip" style="background:#e8624a"></div><div class="meta"><div class="nm">Corail</div><div class="hex">#E8624A</div><div class="use">Accent, boutons, accroches</div></div></div>
+      <div class="sw"><div class="chip" style="background:#d8c4a0"></div><div class="meta"><div class="nm">Sable</div><div class="hex">#D8C4A0</div><div class="use">Détails chauds, sur fond sombre</div></div></div>
+      <div class="sw"><div class="chip" style="background:#f4efe6;border-bottom:1px solid var(--line)"></div><div class="meta"><div class="nm">Papier</div><div class="hex">#F4EFE6</div><div class="use">Fond principal</div></div></div>
+      <div class="sw"><div class="chip" style="background:#1c2826"></div><div class="meta"><div class="nm">Encre</div><div class="hex">#1C2826</div><div class="use">Texte, fonds sombres</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · TYPOGRAPHY -->
+<section>
+  <div class="wrap">
+    <div class="sec-num">06 — Typographie</div>
+    <h2>Caractères</h2>
+    <div class="type-row">
+      <div class="typecard">
+        <div class="role">Titres — display</div>
+        <div class="fam">Fraunces · sérif contemporain, chaleureux, un brin couture</div>
+        <div class="specimen-serif">L'art de réunir vos invités</div>
+      </div>
+      <div class="typecard">
+        <div class="role">Texte courant</div>
+        <div class="fam">Spline Sans · sans-serif clair, moderne, lisible partout</div>
+        <div class="specimen-sans">Des sites d'événement pensés comme un accueil d'hôtel : chaque détail compte, du premier lien jusqu'au souvenir.</div>
+      </div>
+      <div class="typecard">
+        <div class="role">Labels &amp; données</div>
+        <div class="fam">Spline Sans Mono · pour les intitulés, légendes et signatures</div>
+        <div class="specimen-mono">STUDIO HOSTLY · L'ART DE RÉUNIR</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · VOICE -->
+<section>
+  <div class="wrap">
+    <div class="sec-num">07 — Ton de voix</div>
+    <h2>Comment Studio Hostly parle</h2>
+    <p class="lead">Chaleureux et précis, comme un grand concierge : on conseille sans jargon, on rassure sans en faire trop, on parle à l'invité avant de parler de technique.</p>
+    <div class="voice">
+      <div class="vcard do">
+        <div class="h"><span class="dot"></span><b>On dit</b></div>
+        <ul>
+          <li>« Vos invités, réunis autour d'un seul lien. »</li>
+          <li>Phrases simples, verbes actifs, ton hospitalier.</li>
+          <li>On parle bénéfice et expérience, pas fonctionnalité.</li>
+          <li>Le conseil d'abord : « voici ce que je vous recommande ».</li>
+        </ul>
+      </div>
+      <div class="vcard dont">
+        <div class="h"><span class="dot"></span><b>On évite</b></div>
+        <ul>
+          <li>Le jargon tech (« plateforme SaaS scalable »).</li>
+          <li>Les superlatifs creux (« la meilleure solution »).</li>
+          <li>Le ton agence-de-com impersonnel.</li>
+          <li>Promettre sans expliquer ni conseiller.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · NAMING USAGE -->
+<section>
+  <div class="wrap">
+    <div class="sec-num">08 — Écrire le nom</div>
+    <h2>Bons usages</h2>
+    <div class="usage">
+      <div class="urow"><span class="ok">À faire</span><span><strong>Studio Hostly</strong> au complet à la première mention ; <strong>Hostly</strong> seul ensuite.</span></div>
+      <div class="urow"><span class="ok">À faire</span><span>« Hostly » avec un H majuscule, le reste en minuscules.</span></div>
+      <div class="urow"><span class="ok">À faire</span><span>Baseline sous le nom : <em>Studio Hostly — l'art de réunir vos invités.</em></span></div>
+      <div class="urow"><span class="no">À éviter</span><span>« HOSTLY » tout en capitales dans le texte courant.</span></div>
+      <div class="urow"><span class="no">À éviter</span><span>« Hostly Studio », « Host.ly », « Hostley » — l'orthographe est fixe.</span></div>
+      <div class="urow"><span class="no">À éviter</span><span>Confondre avec « Hostfully » : toujours écrire le nom en entier.</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Studio Hostly · Kit de marque v1 · à faire évoluer au fil du projet</p>
+  </div>
+</footer>
+
+</body>
+</html>
