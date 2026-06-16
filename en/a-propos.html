@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About · Bertrand — Studio Hostly</title>
+<meta name="description" content="Ten years of international luxury hospitality and hospitality tech: a 360° view of what organisation really needs and the right technology to serve it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .about-hero{position:relative;overflow:hidden;padding:74px 0 30px}
+  .about-hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(110% 70% at 90% -10%,rgba(31,111,106,.15),transparent 58%),radial-gradient(70% 50% at -5% 110%,rgba(232,98,74,.10),transparent 55%)}
+  .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:center;position:relative}
+  .portrait{position:relative;border-radius:22px;overflow:hidden;box-shadow:var(--shadow-lg);background:var(--paper-2);aspect-ratio:4/5}
+  .portrait img{width:100%;height:100%;object-fit:cover;display:block}
+  .portrait .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--sea-deep);background:linear-gradient(160deg,#e9e0cf,#d8c4a0)}
+  .portrait .ph small{font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+  .about-hero .eyebrow{font-family:'Spline Sans Mono',monospace;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--sea);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+  .about-hero .eyebrow::before{content:"";width:34px;height:1px;background:var(--sea)}
+  .about-hero h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(32px,4.6vw,54px);line-height:1.05;letter-spacing:-.02em}
+  .about-hero h1 em{font-style:italic;color:var(--sea)}
+  .about-hero .lede{margin-top:22px;font-size:clamp(16px,1.7vw,19px);color:#3a4a47;max-width:50ch}
+  .pedigree{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .badge{font-family:'Spline Sans Mono',monospace;font-size:12px;letter-spacing:.04em;border:1px solid var(--line);border-radius:100px;padding:7px 14px;color:var(--sea-deep);background:var(--card)}
+
+  .story{max-width:760px;margin:0 auto}
+  .story h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(24px,3.2vw,32px);letter-spacing:-.01em;margin-bottom:18px}
+  .story p{font-size:16.5px;color:#33423f;margin-bottom:18px;line-height:1.7}
+  .story p strong{color:var(--ink)}
+
+  .vision{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .vcell{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 26px}
+  .vcell .n{font-family:'Fraunces',serif;font-size:38px;color:var(--coral);line-height:1}
+  .vcell h3{font-family:'Fraunces',serif;font-weight:500;font-size:19px;margin:14px 0 7px}
+  .vcell p{font-size:14px;color:var(--muted)}
+
+  .two-worlds{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .world{border-radius:18px;padding:32px 28px}
+  .world.lux{background:linear-gradient(165deg,var(--sea),var(--sea-deep));color:#eef6f4}
+  .world.tech{background:var(--ink);color:var(--paper)}
+  .world .tag{font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--sand)}
+  .world h3{font-family:'Fraunces',serif;font-weight:500;font-size:23px;margin:10px 0 12px}
+  .world p{font-size:14.5px;color:rgba(244,239,230,.85)}
+
+  .quote{background:var(--paper-2);border-radius:22px;padding:48px 44px;text-align:center}
+  .quote p{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:clamp(22px,3vw,30px);line-height:1.35;color:var(--ink);max-width:24ch;margin:0 auto}
+
+  @media(max-width:860px){
+    .about-grid{grid-template-columns:1fr;gap:36px;max-width:420px;margin:0 auto}
+    .vision{grid-template-columns:1fr}
+    .two-worlds{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand"><svg class="mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Studio Hostly"><circle cx="32" cy="32" r="31" fill="#13524e"/><circle cx="32" cy="32" r="5.5" fill="#e8624a"/><circle cx="32" cy="15" r="2.6" fill="#f4efe6"/><circle cx="47" cy="24" r="2.6" fill="#f4efe6"/><circle cx="47" cy="40" r="2.6" fill="#f4efe6"/><circle cx="32" cy="49" r="2.6" fill="#f4efe6"/><circle cx="17" cy="40" r="2.6" fill="#f4efe6"/><circle cx="17" cy="24" r="2.6" fill="#f4efe6"/><path d="M32 18 L32 27 M44.5 25.5 L37 30 M44.5 38.5 L37 34 M32 46 L32 37 M19.5 38.5 L27 34 M19.5 25.5 L27 30" stroke="#d8c4a0" stroke-width="1.6" stroke-linecap="round"/></svg>Studio Hostly</a>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="tarifs.html">Pricing</a>
+      <a href="airbnb.html">Airbnb &amp; rentals</a>
+      <a href="realisations.html">Work</a>
+      <a href="a-propos.html" class="active">About</a>
+      <a href="../a-propos.html" class="lang-switch" style="font-family:'Spline Sans Mono',monospace;font-size:12px;letter-spacing:.08em">FR</a>
+      <a href="contact.html" class="nav-cta">Request a quote</a>
+    </div>
+  </div>
+</nav>
+
+<header class="about-hero">
+  <div class="wrap about-grid">
+    <div class="portrait reveal">
+      <img src="../bertrand.jpg" alt="Bertrand, founder of Studio Hostly">
+    </div>
+    <div>
+      <div class="eyebrow">About</div>
+      <h1>Hi, I'm <em>Bertrand</em>.</h1>
+      <p class="lede">Ten years orchestrating the guest experience in international luxury hospitality, then in hospitality tech. Today I put that dual background to work for your event.</p>
+      <div class="pedigree">
+        <span class="badge">Le Bristol</span>
+        <span class="badge">Sofitel</span>
+        <span class="badge">Park Hyatt</span>
+        <span class="badge">Hospitality tech</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="story reveal">
+      <h2>Two worlds, one obsession: the experience</h2>
+      <p>For ten years I worked in establishments where "good enough" was never an option. Welcoming a guest, anticipating their needs before they voice them, coordinating a stay so it feels effortless when it is in fact meticulously prepared — that is the daily reality of international luxury hospitality.</p>
+      <p>I then moved into <strong>hospitality tech</strong>: the tools that smooth the relationship between a property and its guests. I saw from the inside what makes a technology genuinely serve people — and what is merely a gimmick.</p>
+      <p>From that dual experience comes a <strong>360° perspective</strong>: I understand the real need for organisation, and I know how to choose the simplest, most fitting solution to serve it. That is exactly what I bring to every website I design.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap">
+    <div class="two-worlds reveal">
+      <div class="world lux">
+        <div class="tag">The field</div>
+        <h3>Luxury hospitality</h3>
+        <p>An eye for detail, the art of welcoming, the ability to anticipate. A great stay never happens by chance — it's prepared. That's the lens I bring to your event.</p>
+      </div>
+      <div class="world tech">
+        <div class="tag">The tools</div>
+        <h3>Hospitality tech</h3>
+        <p>Knowing which technology truly serves the experience, and which just complicates things for nothing. The right tool, well used, in service of your guests — never the other way around.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;margin:0 auto 40px">
+      <div class="sec-kicker" style="text-align:center">What it means for you</div>
+      <div class="sec-title">More than a provider, an advisor</div>
+    </div>
+    <div class="vision">
+      <div class="vcell reveal">
+        <div class="n">360°</div>
+        <h3>A complete view</h3>
+        <p>From your guests' first contact to the memory they keep, nothing is left out.</p>
+      </div>
+      <div class="vcell reveal">
+        <div class="n">10 yrs</div>
+        <h3>Hospitality as instinct</h3>
+        <p>A decade anticipating the needs of demanding guests, internationally.</p>
+      </div>
+      <div class="vcell reveal">
+        <div class="n">1</div>
+        <h3>One contact</h3>
+        <p>A single point of contact who advises and stays available right up to the day. Not a form.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap">
+    <div class="quote reveal">
+      <p>“A fine welcome isn't seen. It's felt. That's what I design for you.”</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap">
+    <div class="quote reveal" style="background:linear-gradient(160deg,var(--sea-deep),var(--sea));color:#f4efe6;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;text-align:left">
+      <div style="max-width:24ch">
+        <h2 class="serif" style="font-weight:500;font-size:clamp(24px,3vw,32px);letter-spacing:-.01em">Shall we talk?</h2>
+        <p style="font-family:'Spline Sans',sans-serif;font-style:normal;font-size:15px;color:rgba(244,239,230,.82);margin-top:8px;max-width:36ch">Tell me what event you're planning. The first conversation comes with no commitment.</p>
+      </div>
+      <a href="contact.html" class="btn btn-primary">Request a quote →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <h5>Studio Hostly</h5>
+      <p>Event websites designed with a luxury-hospitality eye and the right technology. More than a deliverable: real advice.</p>
+    </div>
+    <div>
+      <div class="foot-label">The site</div>
+      <a href="index.html">Home</a>
+      <a href="tarifs.html">Pricing</a>
+      <a href="airbnb.html">Airbnb &amp; rentals</a>
+      <a href="realisations.html">Work</a>
+    </div>
+    <div>
+      <div class="foot-label">Learn more</div>
+      <a href="a-propos.html">About</a>
+      <a href="contact.html">Request a quote</a>
+    </div>
+  </div>
+  <div class="foot-bottom">© 2026 Studio Hostly · crafted by Bertrand</div>
+</footer>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>
